@@ -44,10 +44,24 @@ export type Database = {
         }
         Relationships: [
           {
+            foreignKeyName: "assignments_assigner_profile_fkey"
+            columns: ["assigned_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "assignments_complaint_id_fkey"
             columns: ["complaint_id"]
             isOneToOne: false
             referencedRelation: "complaints"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "assignments_staff_profile_fkey"
+            columns: ["staff_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
         ]
@@ -346,6 +360,13 @@ export type Database = {
           status?: Database["public"]["Enums"]["complaint_status"]
         }
         Relationships: [
+          {
+            foreignKeyName: "status_history_changer_profile_fkey"
+            columns: ["changed_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "status_history_complaint_id_fkey"
             columns: ["complaint_id"]
